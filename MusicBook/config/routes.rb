@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  resources :genres
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resource :dashboard, only: [:show]
+    resources :artists
+    resources :genres
+    resources :albums
+    resources :songs
+    root :to => "admin#dashboard", as: :admin
+  end
+
+  resources :genres, only: [:index]
+
   root 'home#index'
-  resources :artists
+
+  resources :artists, only: [:index]
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
-
-  namespace :admin do
-    resource :dashboard, only: [:show]
-    #resource :artists
-    get 'artists' => 'artists#index'
-    get 'artists/new' => 'artists#new'
-    get 'artists/show/:id' => 'artists#show'
-
-  end
-
 
 end

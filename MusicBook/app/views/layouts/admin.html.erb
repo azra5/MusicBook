@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ror3Demo | Admin</title>
+    <title>MusicBook | Admin</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -24,6 +24,10 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Back to site', root_path %></li>
+            <li><%= link_to 'Artists', admin_artists_path %></li>
+            <li><%= link_to 'Genres', admin_genres_path %></li>
+            <li><%= link_to 'Album', admin_albums_path %></li>
+            <li><%= link_to 'Songs', admin_songs_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

@@ -16,9 +16,9 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.description %></td>
-        <td><%= link_to 'Show', genre %></td>
-        <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
-        <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_genre_path(genre) %></td>
+        <td><%= link_to 'Edit', edit_admin_genre_path(genre) %></td>
+        <td><%= link_to 'Destroy', admin_genre_path(genre), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Genre', new_genre_path %>
+<%= link_to 'New Genre', new_admin_genre_path %>

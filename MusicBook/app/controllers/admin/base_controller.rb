@@ -1,5 +1,5 @@
 class Admin::BaseController < ApplicationController
-  before_action :authorize_for_admins
+  before_action :authorize
 
   layout 'admin'
 end

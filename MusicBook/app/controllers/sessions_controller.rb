@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:notice] = 'Logged in successfully!'
       cookies[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path unless @user.admin?
+        redirect_to admin_root_path
+      end
     else
       flash[:error] = 'Incorrect username or password!'
       render :new
