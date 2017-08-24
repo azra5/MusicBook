@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Genres</h1>
+<div class="panel panel-success">
+  <div class="panel-heading"><h4>Genres </h4><%= link_to 'New Genre', new_admin_genre_path %>
+</div>
+  <div class="panel-body">
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -24,6 +27,6 @@
   </tbody>
 </table>
 
-<br>
+</div>
+</div>
 
-<%= link_to 'New Genre', new_admin_genre_path %>

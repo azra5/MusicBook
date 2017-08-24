@@ -28,7 +28,7 @@ class Admin::AlbumsController < Admin::BaseController
 
   def update
       if @album.update(album_params)
-        redirect_to admin_album(@album), notice: 'Album was successfully updated.' 
+        redirect_to admin_album_path(@album), notice: 'Album was successfully updated.' 
       else
         render :edit 
       end
@@ -36,7 +36,7 @@ class Admin::AlbumsController < Admin::BaseController
 
   def destroy
     @album.destroy
-      redirect_to admin_albums_url, notice: 'Album was successfully destroyed.' 
+      redirect_to admin_albums_path, notice: 'Album was successfully destroyed.' 
   end
 
   private

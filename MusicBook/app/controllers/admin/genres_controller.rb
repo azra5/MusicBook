@@ -19,7 +19,7 @@ class Admin::GenresController < Admin::BaseController
     @genre = Genre.new(genre_params)
 
       if @genre.save
-        redirect_to @genre, notice: 'Genre was successfully created.'
+        redirect_to admin_genre_path(@genre), notice: 'Genre was successfully created.'
       else
        render :new
       end
@@ -27,7 +27,7 @@ class Admin::GenresController < Admin::BaseController
 
   def update
       if @genre.update(genre_params)
-        redirect_to @genre, notice: 'Genre was successfully updated.'
+        redirect_to admin_genre_path(@genre), notice: 'Genre was successfully updated.'
       else
         render :edit
       end
@@ -36,7 +36,7 @@ class Admin::GenresController < Admin::BaseController
 
   def destroy
     @genre.destroy
-      redirect_to genres_url, notice: 'Genre was successfully destroyed.'
+      redirect_to admin_genres_path, notice: 'Genre was successfully destroyed.'
     end
 
 

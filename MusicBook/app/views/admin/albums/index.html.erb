@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Albums</h1>
-
-<table>
+<div class="panel panel-success">
+  <div class="panel-heading"><h4>Albums </h4><%= link_to 'New Album', new_admin_album_path %></div>
+  <div class="panel-body">
+    <table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,6 +27,7 @@
   </tbody>
 </table>
 
-<br>
+  </div>
+</div>
 
-<%= link_to 'New Album', new_admin_album_path %>
+

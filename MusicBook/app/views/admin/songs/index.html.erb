@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Songs</h1>
+<div class="panel panel-success">
+  <div class="panel-heading"><h4>Songs </h4><%= link_to 'New Song', new_admin_song_path %>
+</div>
+  <div class="panel-body">
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -29,7 +32,6 @@
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
 
-<br>
-
-<%= link_to 'New Song', new_admin_song_path %>
