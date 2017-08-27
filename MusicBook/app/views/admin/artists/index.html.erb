@@ -25,9 +25,11 @@
         <td><%= artist.placeOfBirth %></td>
         <td><%= artist.state %></td>
         <td><%= artist.address %></td>
+        <% if artist.user_id == current_user.id %>
         <td><%= link_to 'Show', admin_artist_path(artist) %></td>
         <td><%= link_to 'Edit', edit_admin_artist_path(artist) %></td>
         <td><%= link_to 'Destroy', admin_artist_path(artist), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

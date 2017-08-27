@@ -3,19 +3,19 @@
 <div class="panel panel-success">
   <div class="panel-heading"><h1>Songs </h1></div>
   <div class="panel-body"><table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Genre</th>
-      <th>Duration</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Genre</th>
+        <th>Duration</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @songs.each do |song| %>
+    <tbody>
+      <% @songs.each do |song| %>
       <tr>
         <td><%= song.name %></td>
         <td><%= song.artist.name %></td>
@@ -23,17 +23,23 @@
         <td><%= song.genre.name %></td>
         <td><%= song.duration %></td>
         <% if logged_in? %>
-
-      <td><i class="<%= isFavourite(song.id) %>" onclick="addOrRemoveFavourite('<%= song.id %>', this)"></i>
-      </td>
-
-        <td><%= button_tag "Add to playlist", :type => 'button', :class => 'btn btn-success btn-sm', :onclick => "func(#{song.id})" %></td>
-
+        <td><i class="<%= isFavourite(song.id) %>" onclick="addOrRemoveFavourite('<%= song.id %>', this)"></i>
+        </td>
+        <td>
+          <a onclick="func('<%= song.id %>')">
+            <span class="glyphicon glyphicon-plus-sign" onclick=""></span>
+          </a>
+        </td>
         <% end %>
+        <td>
+          <a target="_blank" href="<%= song.ytlink %>">
+            <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+          </a>
+        </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @songs %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @songs %>
 </div>
 </div>

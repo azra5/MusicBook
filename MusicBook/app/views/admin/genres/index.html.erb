@@ -19,9 +19,11 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.description %></td>
+        <% if genre.user_id == current_user.id %>
         <td><%= link_to 'Show', admin_genre_path(genre) %></td>
         <td><%= link_to 'Edit', edit_admin_genre_path(genre) %></td>
         <td><%= link_to 'Destroy', admin_genre_path(genre), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

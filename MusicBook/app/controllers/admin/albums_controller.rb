@@ -18,6 +18,7 @@ class Admin::AlbumsController < Admin::BaseController
 
   def create
     @album = Album.new(album_params)
+    @album.user_id = cookies[:user_id]
 
       if @album.save
         redirect_to admin_album_path(@album), notice: 'Album was successfully created.' 

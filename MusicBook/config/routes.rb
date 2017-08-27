@@ -26,8 +26,11 @@ Rails.application.routes.draw do
   get '/albums' => 'albums#index', as: :albums_home
   get '/album/:id' => 'albums#show', as: :album_show
 
+  get '/genres' => 'genres#index', as: :genres_home
+  get '/genre/:id' => 'genres#show', as: :genre_show
 
   get '/songs' => 'home#songs', as: :songs_home
+
   get '/playlists' => 'home#playlists', as: :playlists_home
   get '/favourites' => 'home#favourites', as: :favourites_home
 

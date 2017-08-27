@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+  <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <% if logged_in? %>
+    <%= render 'shared/playlist_song' %>
+    <% end %>
+  </div>
 <div class="jumbotron">
   <h1><%= @album.name %></h1>
 <p>

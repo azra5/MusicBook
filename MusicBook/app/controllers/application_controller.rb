@@ -26,8 +26,8 @@ class ApplicationController < ActionController::Base
   def isFavourite(song_id)
     @favourites = Favourite.where(:user_id => cookies[:user_id], :song_id => song_id)
       if (@favourites.count > 0)
-        return 'heart fa fa-heart-o'
-      else return 'heart fa fa-heart'
+        return 'heart fa fa-heart'
+      else return 'heart fa fa-heart-o'
 end
   end
 
@@ -41,7 +41,7 @@ end
   end
 
   def authorize_for_admins
-    unless current_user.admin?
+    unless current_user.admin? || current_user.superadmin?
       flash[:notice] = 'Unauthorized access, you shall not pass!'
       redirect_to root_path
     end

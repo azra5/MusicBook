@@ -11,6 +11,7 @@ class Admin::ArtistsController < Admin::BaseController
 
   def create
     @artist = Artist.new(artist_params)
+    @artist.user_id = cookies[:user_id]
 
       if @artist.save
         redirect_to admin_artist_path(@artist), notice: 'Artist was successfully created.'

@@ -19,9 +19,11 @@
         <td><%= album.name %></td>
         <td><%= album.year %></td>
         <td><%= album.artist.name %></td>
+        <% if album.user_id == current_user.id %>
         <td><%= link_to 'Show', admin_album_path(album) %></td>
         <td><%= link_to 'Edit', edit_admin_album_path(album) %></td>
         <td><%= link_to 'Destroy', admin_album_path(album), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+  <div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <% if logged_in? %>
+    <%= render 'shared/playlist_song' %>
+    <% end %>
+  </div>
+  
+<div class="jumbotron">
+  <h1><%= @genre.name %></h1>
+  <p>
+    <strong>Name:</strong>
+    <%= @genre.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @genre.description %>
+  </p>
+
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading"><h4>Songs </h4>
+  </div>
+  <div class="panel-body">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Genre</th>
+          <th>Duration</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @songs.each do |song| %>
+        <tr>
+          <td><%= song.name %></td>
+          <td><%= song.artist.name %></td>
+          <td><%= song.album.name %></td>
+          <td><%= song.genre.name %></td>
+          <td><%= songDuration(song.duration) %></td>
+          <% if logged_in? %>
+          <td><i class="<%= isFavourite(song.id) %>" onclick="addOrRemoveFavourite('<%= song.id %>', this)"></i>
+          </td>
+          <td>
+            <a onclick="func('<%= song.id %>')">
+              <span class="glyphicon glyphicon-plus-sign" onclick=""></span>
+            </a>
+          </td>
+          <% end %>
+          <td>
+            <a target="_blank" href="<%= song.ytlink %>">
+              <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+            </a>
+          </td>
+        </tr>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

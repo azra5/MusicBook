@@ -18,6 +18,7 @@ class Admin::SongsController < Admin::BaseController
   
   def create
     @song = Song.new(song_params)
+    @song.user_id = cookies[:user_id]
 
       if @song.save
         redirect_to admin_song_path(@song), notice: 'Song was successfully created.' 

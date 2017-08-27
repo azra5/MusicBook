@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
 
   def index
-  	@songs = Song.order(:created_at).page params[:page]
-    query = "select favourites.*, count(song_id) num from favourites group by song_id order by num limit 5"
-    @trending = ActiveRecord::Base.connection.execute(query)
+    p params[:search]
+    @songs = Song.search(params[:search]).order(:created_at).page params[:page]
+    @trending = Song.joins("INNER JOIN favourites ON favourites.song_id = songs.id").group(:song_id).order("count(favourites.song_id) desc")
+    @albums = Album.order(:created_at).take(5)
   end
 
   def songs

@@ -17,6 +17,7 @@ class Admin::GenresController < Admin::BaseController
 
   def create
     @genre = Genre.new(genre_params)
+    @genre.user_id = cookies[:user_id]
 
       if @genre.save
         redirect_to admin_genre_path(@genre), notice: 'Genre was successfully created.'

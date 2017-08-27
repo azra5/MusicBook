@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824191937) do
+ActiveRecord::Schema.define(version: 20170827210223) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 20170824191937) do
     t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 20170824191937) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -45,6 +49,8 @@ ActiveRecord::Schema.define(version: 20170824191937) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
   create_table "playlist_songs", force: :cascade do |t|
@@ -73,9 +79,12 @@ ActiveRecord::Schema.define(version: 20170824191937) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ytlink"
+    t.integer "user_id"
     t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["genre_id"], name: "index_songs_on_genre_id"
+    t.index ["user_id"], name: "index_songs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
