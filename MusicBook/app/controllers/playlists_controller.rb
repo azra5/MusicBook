@@ -1,8 +1,15 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
 
+  def numberOfSongs(id)
+    return PlaylistSong.where(:playlist_id => id).count
+  end
+
+  helper_method :numberOfSongs
+  
   def index
-    @playlists = Playlist.all
+    params[:action] = 'playlists'
+    @playlists = Playlist.where(:user_id => cookies[:user_id])
   end
 
   def show

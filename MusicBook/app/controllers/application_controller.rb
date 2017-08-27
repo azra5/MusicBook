@@ -13,6 +13,27 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_in?
 
+  def songDuration(duration)
+    hours = duration/3600
+    minutes = (duration % 3600)/60
+    seconds = (duration % 60)
+
+    return '' + hours.to_s.rjust(2, '0') + ':' + minutes.to_s.rjust(2, '0') + ':' + seconds.to_s.rjust(2, '0')
+  end
+
+  helper_method :songDuration
+
+  def isFavourite(song_id)
+    @favourites = Favourite.where(:user_id => cookies[:user_id], :song_id => song_id)
+      if (@favourites.count > 0)
+        return 'heart fa fa-heart-o'
+      else return 'heart fa fa-heart'
+end
+  end
+
+  helper_method :isFavourite
+
+
   protected
 
   def authorize

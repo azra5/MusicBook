@@ -10,19 +10,30 @@ class PlaylistSongsController < ApplicationController
 
   def new
     @playlist_song = PlaylistSong.new
+    respond_to do |format|
+    format.html
+    format.js
+  end
   end
 
   def edit
   end
 
   def create
-    @playlist_song = PlaylistSong.new(playlist_song_params)
+
+    @playlist_songs = PlaylistSong.where(:playlist_id => playlist_song_params[:playlist_id], :song_id => playlist_song_params[:song_id])
+
+    if(@playlist_songs.count > 0)
+      render :json => 'You already added this song to this playlist.'
+    else
+       @playlist_song = PlaylistSong.new(playlist_song_params)
 
       if @playlist_song.save
-        redirect_to @playlist_song, notice: 'Playlist song was successfully created.' 
+        render :json => 'Song successfully added to the playlist.' 
       else
-        render :new 
+        render :json => 'Error adding song to the playlist.' 
       end
+    end
   end
 
   def update

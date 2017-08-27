@@ -1,10 +1,16 @@
 <div>
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <% if logged_in? %>
+    <%= render 'shared/playlist_song' %>
+            <% end %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <h2 class="text-center">Welcome to MusicBook! Enjoy in listening good music :) </h2>
 <div class="row" style="margin-top: 50px;">
 <div class="col-md-7" style="padding: 10px;">
-<h3>Songs</h3>
+<h3>All songs</h3>
 <table class="table">
   <thead>
     <tr>
@@ -24,17 +30,55 @@
         <td><%= song.artist.name %></td>
         <td><%= song.album.name %></td>
         <td><%= song.genre.name %></td>
-        <td><%= song.duration %></td>
-        <td><%= link_to 'To favourites', admin_song_path(song) %></td>
-        <td><%= link_to 'To playlist', edit_admin_song_path(song) %></td>
+        <td><%= songDuration(song.duration) %></td>
+        <% if logged_in? %>
+<td><i class="<%= isFavourite(song.id) %>" onclick="addOrRemoveFavourite('<%= song.id %>', this)"></i>
+</td>
+        <td><%= button_tag "Add to playlist", :type => 'button', :class => 'btn btn-success btn-sm', :onclick => "func(#{song.id})" %></td>
+
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @songs %>
+
+
 </div>
 <div class="col-md-5" style="padding: 10px;">
 <h3>Trending</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Genre</th>
+      <th>Duration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.name %></td>
+        <td><%= song.artist.name %></td>
+        <td><%= song.album.name %></td>
+        <td><%= song.genre.name %></td>
+        <td><%= songDuration(song.duration) %></td>
+        <% if logged_in? %>
+
+<td><i class="<%= isFavourite(song.id) %>" onclick="addOrRemoveFavourite('<%= song.id %>', this)"></i>
+</td>
+
+        <td><%= button_tag "Add to playlist", :type => 'button', :class => 'btn btn-success btn-sm', :onclick => "func(#{song.id})" %></td>
+
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 </div>
 </div>

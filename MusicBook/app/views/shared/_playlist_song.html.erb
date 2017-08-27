@@ -1,0 +1,25 @@
+<div id="content">
+<%= form_for @playlist_song = PlaylistSong.new, method: :post do |form| %>
+
+<div class="modal-header">
+   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+   <h3 id="myModalLabel">Adding song to playlist</h3>
+ </div>
+ <div class="modal-body">
+  <div class="field" hidden="truue">
+    <%= form.text_field :song_id, id: :song_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Playlist' %>
+    <%= form.collection_select :playlist_id, Playlist.where(:user_id => current_user.id).order(:name),:id,:name, include_blank: false %>
+  </div>
+
+ </div>
+ <div class="modal-footer">
+   <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+   <button type="button" class="btn btn-primary" onclick="saveSongPlaylist()" ">Save changes</button>
+ </div>
+ <% end %>
+
+ </div>

@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Artists</h1>
-
+<div class="panel panel-success">
+  <div class="panel-heading"><h1>Artists</h1></div>
+  <div class="panel-body">
 <table class="table">
   <thead>
     <tr>
@@ -22,10 +23,11 @@
         <td><%= artist.placeOfBirth %></td>
         <td><%= artist.state %></td>
         <td><%= artist.address %></td>
-        <td><%= link_to 'Show', artist %></td>
+        <td><%= link_to 'Show', artist_show_path(artist) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+</div>
+</div>

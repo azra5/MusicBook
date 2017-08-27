@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="panel panel-success">
-  <div class="panel-heading"><h4>Playlists </h4><%= link_to 'New Playlist', new_playlist_path %>
+  <div class="panel-heading"><h1>Playlists </h1><%= link_to 'New Playlist', new_playlist_path %>
 
 </div>
   <div class="panel-body">
@@ -11,6 +11,7 @@
     <tr>
       <th>Name</th>
       <th>Number of songs</th>
+      <th>Created</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +20,8 @@
     <% @playlists.each do |playlist| %>
       <tr>
         <td><%= playlist.name %></td>
-        <td><%= playlist.numOfSongs %></td>
+        <td><%= numberOfSongs(playlist.id) %></td>
+        <td><%= playlist.created_at %></td>
         <td><%= link_to 'Songs', playlist_songs_list_path(playlist) %></td>
         <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
         <td><%= link_to 'Destroy', playlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>

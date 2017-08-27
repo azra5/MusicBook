@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-success">
+  <div class="panel-heading"><h1>Albums </h1></div>
+  <div class="panel-body">
+    <table class="table">
+  <thead>
+    <tr>
+    <th>Photo</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Artist</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+          <td><%= image_tag "albumimage.jpg" %>
+          </td>
+        <td><%= album.name %></td>
+        <td><%= album.year %></td>
+        <td><%= album.artist.name %></td>
+        <td><%= link_to 'Show', album_show_path(album) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+

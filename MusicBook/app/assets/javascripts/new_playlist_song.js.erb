@@ -1,0 +1,47 @@
+function func(song_id) {
+
+		$('#modal-window').modal('toggle');
+
+		$('#song_id').val(song_id);
+
+}
+
+function saveSongPlaylist(){
+	var song_id = $('#song_id').val();
+	var playlist_id = $('#playlist_song_playlist_id').val();
+
+$.ajax({
+        url:'/playlist_songs',
+        type:'POST',
+        dataType:'json',
+        async: true,
+        data:{
+        	playlist_song:{
+            song_id: song_id,
+            playlist_id: playlist_id
+        }
+        },
+        success:function(data){
+            alert(data.responseText);
+        },
+        error:function(data){
+            console.log(data.responseText);
+        }
+    });	
+            
+    $('#modal-window').modal('toggle');
+
+}
+
+function addOrRemoveFavourite(song_id, obj) {
+    var button = $(this);
+$.ajax({
+        url:'/home/addOrRemoveSongFromFavourites/' + song_id,
+        type:'GET',
+        success:function(data){
+            $(obj).toggleClass("fa-heart fa-heart-o");
+        },
+        error:function(data){
+        }
+    }); 
+}
