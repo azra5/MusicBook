@@ -18,5 +18,5 @@ Artist.create(name: 'Witney Houston', dob:'1952-05-07', placeOfBirth: 'America',
 Album.create(name: 'album 1', year: 2012, artist_id: 1, user_id: 2)
 Album.create(name: 'album 2', year: 2000, artist_id: 2, user_id: 3)
 
-Song.create(name: 'song 1', artist_id: 1, album_id: 1, genre_id: 1, duration: 300, user_id: 2)
-Song.create(name: 'song 2', artist_id: 2, album_id: 2, genre_id: 2, duration: 400, user_id: 3)
+Song.create(name: 'Smooth criminal', artist_id: 1, album_id: 1, genre_id: 1, duration: 300, ytlink: 'https://www.youtube.com/watch?v=h_D3VFfhvs4', user_id: 2)
+Song.create(name: 'I wanna dance with somebody', artist_id: 2, album_id: 2, genre_id: 2, duration: 400, ytlink: 'https://www.youtube.com/watch?v=eH3giaIzONA', user_id: 3)
