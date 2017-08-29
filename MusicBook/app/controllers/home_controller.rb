@@ -2,8 +2,8 @@ class HomeController < ApplicationController
 
   def index
     p params[:search]
-    @songs = Song.search(params[:search]).order(:created_at).page params[:page]
-    @trending = Song.joins("INNER JOIN favourites ON favourites.song_id = songs.id").group(:song_id).order("count(favourites.song_id) desc")
+    @songs = Song.search(params[:search]).page params[:page]
+    @trending = Song.trending(10)
     @albums = Album.order(:created_at).take(5)
   end
 

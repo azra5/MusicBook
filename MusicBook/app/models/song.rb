@@ -5,12 +5,8 @@ class Song < ApplicationRecord
   belongs_to :genre
   has_many :playlist_songs
 
-  def self.search(search)
-  if search
-    where('name LIKE ?', "%#{search}%");
-  else
-    all
-  end
-end
+  scope :search, -> (search) { where('name LIKE ?', "%#{search}%").order(:created_at) }
+
+  scope :trending, -> (top) {joins("INNER JOIN favourites ON favourites.song_id = songs.id").group(:song_id).order("count(favourites.song_id) desc").take(top)}
 
 end
