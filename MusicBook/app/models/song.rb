@@ -7,6 +7,6 @@ class Song < ApplicationRecord
 
   scope :search, -> (search) { where('name LIKE ?', "%#{search}%").order(:created_at) }
 
-  scope :trending, -> (top) {joins("INNER JOIN favourites ON favourites.song_id = songs.id").group(:song_id).order("count(favourites.song_id) desc").take(top)}
+  scope :trending, -> (top) {joins("INNER JOIN favourites ON favourites.song_id = songs.id").group("songs.id").order("count(favourites.song_id) desc").take(top)}
 
 end
