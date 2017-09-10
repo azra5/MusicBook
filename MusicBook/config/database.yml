@@ -24,3 +24,4 @@ production:
    <<: *default
    adapter: postgresql
    database: cryptic-depths-71297
+   url: <%= ENV['DATABASE_URL'] %>
